@@ -8,102 +8,102 @@
     body {
       margin: 0;
       font-family: 'Georgia', serif;
-      background-image: url('1000000441.jpg'); /* Background image */
+      background-image: url('1000000442.jpg'); /* background */
       background-size: cover;
       background-position: center;
-      color: #222;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      text-align: center;
-      padding: 20px;
       background-repeat: no-repeat;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
     }
 
-    .interactive-button {
-      width: 120px;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-      margin-bottom: 20px;
-    }
-
-    .interactive-button:hover {
-      transform: scale(1.1);
-    }
-
-    .rotating-disc {
+    .bunny-button {
       position: absolute;
-      width: 140px;
-      height: 140px;
-      top: 77%;
-      left: 10%;
+      top: 44%; /* Adjust this to exact position */
+      left: 48%; /* Adjust this to exact position */
       transform: translate(-50%, -50%);
-      animation: spin 6s linear infinite;
+      width: 80px;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .disc {
+      position: absolute;
+      bottom: 10%; /* Adjust to match screenshot */
+      left: 12%;   /* Adjust to match screenshot */
+      width: 90px; /* Keep as in image */
+      animation: spin 4s linear infinite;
+      z-index: 1;
     }
 
     @keyframes spin {
-      from { transform: translate(-50%, -50%) rotate(0deg); }
-      to { transform: translate(-50%, -50%) rotate(360deg); }
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
     .letter {
       display: none;
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.95);
       border-radius: 15px;
       padding: 25px;
       max-width: 600px;
       text-align: left;
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
       animation: fadeIn 1s ease forwards;
-      margin-top: 20px;
+      position: absolute;
+      top: 55%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 3;
     }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+    h1 {
+      display: none;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Background music -->
+  <!-- Audio Player -->
   <audio id="bgMusic" loop>
     <source src="balisong.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
-  <!-- Interactive PNG button -->
-  <img src="1000000442.png" alt="interactive bunny" class="interactive-button" onclick="startExperience()">
+  <!-- Bunny Button -->
+  <img src="1000000445.png" alt="bunny" class="bunny-button" onclick="showLetter(); playMusic();">
 
-  <!-- Rotating disc image (does not move position) -->
-  <img src="1000000443.png" alt="rotating disc" class="rotating-disc">
+  <!-- Rotating Disc -->
+  <img src="1000000446.png" alt="vinyl" class="disc">
 
-  <!-- Letter content -->
+  <!-- Letter -->
   <div id="letter" class="letter">
-    <p>To my baby, my sweetheart, my honeybunch sugarplum, my cupcake sa ibabaw ng icing ko, my motivation, my reason, my everything—Happy Birthday!!</p>
-    <p>Years have already passed, but the feelings I’ve felt for you are still the same. I still like you for your humorous jokes and your kind soul. I still like you for the way you are. You truly deserve to be loved—that’s why I am trying to make you feel it.</p>
-    <p>I don’t know if I truly deserve to have you—to be loved by you. After everything, how could you still love and forgive me? I am afraid that I wouldn’t be able to give you the love you truly deserve. I’m afraid that you’ll meet someone who can give you everything without struggling. But I don’t have a choice, though. If I am not worthy enough—if even with simple words I cannot express myself, and I struggle—it is not your fault, it’s mine. And I will never blame you for it. I would still love you, even if you won’t choose me.</p>
-    <p>You’ve built a home in my heart, where laughter echoes through the expanding and contracting chambers—creating a rhythmic pulse of joy.</p>
-    <p>Thank you for being patient with me, especially on the days when I bottle everything up and say nothing. I want to stay through the storms, through the highs and lows, and through this chaotic world. You truly deserve a love that’s constant and unwavering.</p>
-    <p>I have never felt this warmth before. Your laughter, your beauty—everything about you—makes it feel so unreal.</p>
-    <p>I am so truly thankful to have you in my life. May this gift I’ve made for you make your day, even though I am far away. May your life be filled with joy and laughter.</p>
+    <p>To my baby, my sweetheart, my honeybunch sugarplum...</p>
+    <p>Years have already passed, but the feelings I’ve felt for you are still the same...</p>
+    <!-- You can continue your beautiful message here -->
   </div>
 
+  <!-- JS -->
   <script>
-    function startExperience() {
+    function showLetter() {
+      document.getElementById('letter').style.display = 'block';
+    }
+
+    function playMusic() {
       const music = document.getElementById('bgMusic');
-      const letter = document.getElementById('letter');
-
       if (music.paused) {
-        music.play().catch(err => {
-          console.log('Error playing audio:', err);
-        });
+        music.play().catch(err => console.log("Audio error:", err));
       }
-
-      letter.style.display = 'block';
     }
   </script>
+
 </body>
 </html>
