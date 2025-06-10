@@ -3,20 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday</title>
+  <title>Birthday Surprise</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      background-image: url('1000000441.jpg');
+      background: url('1000000441.jpg') no-repeat center center fixed;
       background-size: cover;
-      background-position: center;
-      font-family: 'Arial', sans-serif;
+      font-family: Arial, sans-serif;
       overflow: hidden;
-      position: relative;
     }
 
-    #bunny {
+    .bunny {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -25,26 +23,25 @@
       width: 100px;
     }
 
-    #letter {
+    .letter {
       position: absolute;
-      top: 20%;
+      top: 60%;
       left: 50%;
-      transform: translateX(-50%);
-      background: white;
-      border-radius: 15px;
+      transform: translate(-50%, -50%);
+      background: rgba(255, 255, 255, 0.9);
       padding: 20px;
-      max-width: 300px;
+      border-radius: 10px;
+      width: 300px;
       text-align: center;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
       display: none;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     }
 
-    #disc {
+    .disc {
       position: absolute;
       bottom: 40px;
       left: 40px;
       width: 100px;
-      height: 100px;
       animation: spin 4s linear infinite;
     }
 
@@ -56,12 +53,11 @@
 </head>
 <body>
 
-  <img src="1000000442.png" alt="bunny" id="bunny">
-  <img src="1000000443.png" alt="disc" id="disc">
-
-  <div id="letter">
-    <p>Never in my life have I been more sure,<br>
+  <img src="1000000442.png" class="bunny" id="bunny">
+  <div class="letter" id="letter">
+    <p>Happy Birthday!<br><br>
+    Never in my life have I been more sure,<br>
     So come on up to me and close the door.<br>
     Nobody's made me feel this way before;<br>
-    You're everything I wanted
-      
+    You're everything I wanted and more.</p>
+  </div>
