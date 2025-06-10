@@ -20,30 +20,37 @@
       overflow: hidden;
     }
 
+    /* Envelope Image */
+    .envelope {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 0;
+    }
+
+    /* Bunny Button (center envelope sticker) */
     .bunny-button {
       position: absolute;
-      top: 44%; /* Adjust this to exact position */
-      left: 48%; /* Adjust this to exact position */
+      top: 43.8%;
+      left: 49.3%;
       transform: translate(-50%, -50%);
-      width: 80px;
+      width: 85px;
       cursor: pointer;
       z-index: 2;
     }
 
-    .disc {
+    /* Vinyl Button (bottom left) */
+    .vinyl-button {
       position: absolute;
-      bottom: 10%; /* Adjust to match screenshot */
-      left: 12%;   /* Adjust to match screenshot */
-      width: 90px; /* Keep as in image */
-      animation: spin 4s linear infinite;
-      z-index: 1;
+      bottom: 9.5%;
+      left: 9.5%;
+      width: 90px;
+      cursor: pointer;
+      z-index: 2;
     }
 
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
+    /* Hidden letter message */
     .letter {
       display: none;
       background: rgba(255, 255, 255, 0.95);
@@ -72,35 +79,42 @@
 </head>
 <body>
 
-  <!-- Audio Player -->
+  <!-- Audio -->
   <audio id="bgMusic" loop>
     <source src="balisong.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
-  <!-- Bunny Button -->
-  <img src="1000000445.png" alt="bunny" class="bunny-button" onclick="showLetter(); playMusic();">
+  <!-- Full Envelope Image -->
+  <img src="1000000447.png" alt="envelope" class="envelope">
 
-  <!-- Rotating Disc -->
-  <img src="1000000446.png" alt="vinyl" class="disc">
+  <!-- Bunny (click to show letter + play music) -->
+  <img src="1000000445.png" alt="bunny" class="bunny-button" onclick="showLetter(); toggleMusic();">
 
-  <!-- Letter -->
+  <!-- Disc (click to play/pause music) -->
+  <img src="1000000446.png" alt="vinyl" class="vinyl-button" onclick="toggleMusic();">
+
+  <!-- Message -->
   <div id="letter" class="letter">
-    <p>To my baby, my sweetheart, my honeybunch sugarplum...</p>
+    <p>To my baby, my sweetheart, my honeybunch sugarplum, my cupcake sa ibabaw ng icing ko...</p>
     <p>Years have already passed, but the feelings I’ve felt for you are still the same...</p>
-    <!-- You can continue your beautiful message here -->
+    <p>I still like you for your humorous jokes and your kind soul...</p>
+    <!-- Add the rest of your love letter here -->
   </div>
 
-  <!-- JS -->
+  <!-- JavaScript -->
   <script>
+    const music = document.getElementById('bgMusic');
+
     function showLetter() {
       document.getElementById('letter').style.display = 'block';
     }
 
-    function playMusic() {
-      const music = document.getElementById('bgMusic');
+    function toggleMusic() {
       if (music.paused) {
         music.play().catch(err => console.log("Audio error:", err));
+      } else {
+        music.pause();
       }
     }
   </script>
